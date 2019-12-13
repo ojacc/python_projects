@@ -68,7 +68,22 @@ def roll_dice():
                 print("Current score:", wins_losses_count)
     return wins_losses_count
 
-roll_dice()
+#roll_dice()
+
+def play_game():
+    while True:
+        user_choice = input("What do you want to play?\nA: Flip a coin\nB: Roll a dice\n")
+        if not user_choice.upper() in ["A", "B"]:
+            print("Unvalid input. Please type 'A' or 'B'.")
+            continue
+        if user_choice.upper() == "A":
+            coin_flip()
+            break
+        if user_choice.upper() == "B":
+            roll_dice()
+            break
+
+play_game() 
 
 
 
