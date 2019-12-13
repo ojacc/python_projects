@@ -23,10 +23,14 @@ def coin_flip():
             print("You lost, shame on you!")
         wins_losses_count = list(zip(wins_losses, count))
         while True:
-            what_next = input("Choose one:\nA: Flip again\nB: Check score\nC: Exit game\n")
+            what_next = input("Choose one:\nA: Flip again\nB: Check score\nC: Change game\nD: Exit game\n")
             if what_next in ["A", "a", "Flip again", "flip again"]:
                 break
-            elif what_next in ["C", "c", "Exit game", "exit game"]:
+            elif what_next in ["C", "c", "Change game", "change game"]:
+                roll_dice()
+                play_on = False
+                break
+            elif what_next in ["D", "d", "Exit game", "exit game"]:
                 print("Goodbye!")
                 play_on = False
                 break
@@ -43,8 +47,8 @@ def roll_dice():
     count = [0, 0]
     while play_on:
         print("A 6-sided dice (1-6) is going to be rolled. Which outcome do you expect?")
-        user_guess = int(input())
-        if not user_guess in [1, 2, 3, 4, 5, 6]:
+        user_guess = input()
+        if not user_guess in ['1', '2', '3', '4', '5', '6']:
             print("Unvalid input. Please select an integer between 1 and 6.")
             continue
         dice_result = random.randint(1,6)
@@ -57,17 +61,20 @@ def roll_dice():
             print("You fucking loser!")
         wins_losses_count = list(zip(wins_losses, count))
         while True:
-            what_next = input("Choose one:\nA: Roll again\nB: Check score\nC: Exit game\n")
+            what_next = input("Choose one:\nA: Roll again\nB: Check score\nC: Change game\nD: Exit game\n")
             if what_next in ["A", "a", "Roll again", "roll again"]:
                 break
-            elif what_next in ["C", "c", "Exit game", "exit game"]:
+            elif what_next in ["C", "c", "Change game", "change game"]:
+                coin_flip()
+                play_on = False
+                break
+            elif what_next in ["D", "d", "Exit game", "exit game"]:
                 print("Goodbye!")
                 play_on = False
                 break
             elif what_next in ["B", "b", "Check score", "check score"]:
                 print("Current score:", wins_losses_count)
-    return wins_losses_count
-
+    
 #roll_dice()
 
 def play_game():
